@@ -14,9 +14,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView textView;
     Button button;
     GPS gps;
-    double[] position = new double[2];
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             gps = new GPS(this, this);
         }
         gps.startGPS();
-
     }
 
 

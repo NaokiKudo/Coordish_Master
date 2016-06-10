@@ -13,6 +13,10 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.widget.TextView;
+
+import com.recivilize.naokikudo.coordishmaster.Activity.MainActivity;
+import com.recivilize.naokikudo.coordishmaster.R;
 
 public class GPS implements LocationListener, ActivityCompat.OnRequestPermissionsResultCallback {
 
@@ -26,6 +30,7 @@ public class GPS implements LocationListener, ActivityCompat.OnRequestPermission
 
     private Context context;
     private Activity activity;
+    private TextView textView;
 
     private LocationManager mLocationManager;
 
@@ -38,6 +43,7 @@ public class GPS implements LocationListener, ActivityCompat.OnRequestPermission
         this.context = context;
         this.activity = activity;
         mLocationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        textView = (TextView) ((MainActivity) context).findViewById(R.id.textView);
     }
 
 
@@ -55,7 +61,7 @@ public class GPS implements LocationListener, ActivityCompat.OnRequestPermission
             progressDialog.dismiss();
             Log.d("coordishmaster.GPS", "Got Position");
         }
-
+        textView.setText("Latitude : " + position[0] + ",  Longitude : " + position[1]);
     }
 
     @Override
